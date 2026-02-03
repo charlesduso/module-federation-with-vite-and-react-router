@@ -1,0 +1,20 @@
+{
+  "name": "vite-module-federation",
+  "private": true,
+  "scripts": {
+    "format": "prettier . --write",
+    "host:dev": "cd host && npm run dev",
+    "host:build": "cd host && npm run build",
+    "host:preview": "cd host && npm run preview",
+    "remote:dev": "cd remote && npm run dev",
+    "remote:build": "cd remote && npm run build",
+    "remote:preview": "cd remote && npm run preview"
+  },
+  "workspaces": [
+    "host",
+    "remote"
+  ],
+  "dependencies": {
+    "prettier": "^3.8.1"
+  }
+}
