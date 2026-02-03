@@ -11,28 +11,28 @@ export default defineConfig({
   preview: {
     port: 2001,
   },
-  resolve: {
-    alias: [
-      { find: "react-router-dom", replacement: "react-router" },
-      { find: /^react-router-dom\/(.*)/, replacement: "react-router/$1" },
-    ],
-  },
   plugins: [
     federation({
       name: "delivery",
-      manifest: true,
+      filename: "remoteEntry.js",
       exposes: {
-        "./export-app": "./src/export-app.tsx",
+        "./routes": "./src/routes.tsx",
       },
       shared: {
         react: {
           singleton: true,
         },
-        "react/": {
+        "react-dom": {
+          singleton: true,
+        },
+        "react-router-dom": {
           singleton: true,
         },
       },
     }),
     react(),
   ],
+  build: {
+    target: "chrome89",
+  },
 })

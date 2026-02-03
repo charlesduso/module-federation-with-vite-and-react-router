@@ -9,13 +9,13 @@
             return pkg;
         }
       ,
-        "react/jsx-dev-runtime": async () => {
-          let pkg = await import("__mf__virtual/delivery__prebuild__react_mf_1_jsx_mf_2_dev_mf_2_runtime__prebuild__.js");
+        "react-dom": async () => {
+          let pkg = await import("__mf__virtual/delivery__prebuild__react_mf_2_dom__prebuild__.js");
             return pkg;
         }
       ,
-        "react/jsx-runtime": async () => {
-          let pkg = await import("__mf__virtual/delivery__prebuild__react_mf_1_jsx_mf_2_runtime__prebuild__.js");
+        "react-router-dom": async () => {
+          let pkg = await import("__mf__virtual/delivery__prebuild__react_mf_2_router_mf_2_dom__prebuild__.js");
             return pkg;
         }
       
@@ -52,18 +52,18 @@
             }
           }
         ,
-          "react/jsx-dev-runtime": {
-            name: "react/jsx-dev-runtime",
+          "react-dom": {
+            name: "react-dom",
             version: "19.2.4",
             scope: ["default"],
             loaded: false,
             from: "delivery",
             async get () {
               if (false) {
-                throw new Error(`Shared module '${"react/jsx-dev-runtime"}' must be provided by host`);
+                throw new Error(`Shared module '${"react-dom"}' must be provided by host`);
               }
-              usedShared["react/jsx-dev-runtime"].loaded = true
-              const {"react/jsx-dev-runtime": pkgDynamicImport} = importMap
+              usedShared["react-dom"].loaded = true
+              const {"react-dom": pkgDynamicImport} = importMap
               const res = await pkgDynamicImport()
               const exportModule = {...res}
               // All npm packages pre-built by vite will be converted to esm
@@ -82,18 +82,18 @@
             }
           }
         ,
-          "react/jsx-runtime": {
-            name: "react/jsx-runtime",
-            version: "19.2.4",
+          "react-router-dom": {
+            name: "react-router-dom",
+            version: "7.13.0",
             scope: ["default"],
             loaded: false,
             from: "delivery",
             async get () {
               if (false) {
-                throw new Error(`Shared module '${"react/jsx-runtime"}' must be provided by host`);
+                throw new Error(`Shared module '${"react-router-dom"}' must be provided by host`);
               }
-              usedShared["react/jsx-runtime"].loaded = true
-              const {"react/jsx-runtime": pkgDynamicImport} = importMap
+              usedShared["react-router-dom"].loaded = true
+              const {"react-router-dom": pkgDynamicImport} = importMap
               const res = await pkgDynamicImport()
               const exportModule = {...res}
               // All npm packages pre-built by vite will be converted to esm
@@ -107,7 +107,7 @@
             },
             shareConfig: {
               singleton: true,
-              requiredVersion: "^19.2.4",
+              requiredVersion: "^7.13.0",
               
             }
           }

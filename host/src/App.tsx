@@ -1,37 +1,38 @@
-import { createBrowserRouter, Link, Outlet } from "react-router"
-import { RouterProvider } from "react-router/dom"
-import Delivery from "./Delivery"
-import { createInstance } from "@module-federation/runtime"
-import BridgeReactPlugin from "@module-federation/bridge-react/plugin"
+import {
+  createBrowserRouter,
+  Link,
+  Outlet,
+  RouterProvider,
+} from "react-router-dom"
 
-const mf = createInstance({
-  name: "customer-portal",
-  remotes: [],
-  plugins: [BridgeReactPlugin()],
-})
-
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: (
-      <div>
-        Home
+const router = createBrowserRouter(
+  [
+    {
+      id: "root",
+      path: "/",
+      element: (
         <div>
-          <Link to="/delivery">Go to Delivery App</Link>
+          Home
+          <div>
+            <Link to="/delivery">Go to Delivery App</Link>
+          </div>
+          <br />
+          <Outlet />
         </div>
-        <br />
-        <Outlet />
-      </div>
-    ),
-    children: [
-      {
-        path: "delivery/*",
-        Component: () => <Delivery basename="/delivery" />,
-      },
-    ],
+      ),
+      children: [],
+    },
+  ],
+  {
+    async patchRoutesOnNavigation({ patch, path }) {
+      if (path.startsWith("/delivery")) {
+        const { routes } = await import("delivery/routes")
+        patch("root", routes)
+      }
+    },
   },
-])
+)
 
-export function App() {
+export default function App() {
   return <RouterProvider router={router} />
 }

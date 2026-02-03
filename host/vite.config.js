@@ -8,27 +8,31 @@ export default defineConfig({
     port: 2000,
   },
   base: "http://localhost:2000",
-  resolve: {
-    alias: [
-      { find: "react-router-dom", replacement: "react-router" },
-      { find: /^react-router-dom\/(.*)/, replacement: "react-router/$1" },
-    ],
-  },
   plugins: [
     react(),
     federation({
       name: "customer-portal",
       remotes: {
-        delivery: "delivery@http://localhost:2001/remoteEntry.js",
+        delivery: {
+          name: "delivery",
+          entry: "http://localhost:2001/remoteEntry.js",
+          type: "module",
+        },
       },
       shared: {
         react: {
           singleton: true,
         },
-        "react/": {
+        "react-dom": {
+          singleton: true,
+        },
+        "react-router-dom": {
           singleton: true,
         },
       },
     }),
   ],
+  build: {
+    target: "chrome89",
+  },
 })
