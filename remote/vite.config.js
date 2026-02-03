@@ -8,6 +8,9 @@ export default defineConfig({
     port: 2001,
   },
   base: "http://localhost:2001",
+  preview: {
+    port: 2001,
+  },
   resolve: {
     alias: [
       { find: "react-router-dom", replacement: "react-router" },
