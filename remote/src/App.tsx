@@ -2,13 +2,17 @@ import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom"
 
 const router = createBrowserRouter([
   {
-    path: "/delivery",
+    path: "/remote",
     element: (
       <div>
-        Delivery Remote App <Outlet />
+        Remote app
+        <br />
+        <Outlet />
       </div>
     ),
-    children: [{ path: "orders", element: <div>Orders Page</div> }],
+    children: [
+      { path: "sub-page", element: <div>Sub-page of the Remote app</div> },
+    ],
   },
 ])
 

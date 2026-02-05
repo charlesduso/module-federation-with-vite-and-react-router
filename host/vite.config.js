@@ -11,10 +11,10 @@ export default defineConfig({
   plugins: [
     react(),
     federation({
-      name: "customer-portal",
+      name: "host",
       remotes: {
-        delivery: {
-          name: "delivery",
+        remote: {
+          name: "remote",
           entry: "http://localhost:2001/remoteEntry.js",
           type: "module",
         },

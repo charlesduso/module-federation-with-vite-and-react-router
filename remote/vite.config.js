@@ -13,10 +13,9 @@ export default defineConfig({
   },
   plugins: [
     federation({
-      name: "delivery",
+      name: "remote",
       filename: "remoteEntry.js",
       exposes: {
-        "./routes": "./src/routes.tsx",
         "./export-app": "./src/export-app.tsx",
       },
       bridge: {

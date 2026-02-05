@@ -4,40 +4,31 @@ import {
   Outlet,
   RouterProvider,
 } from "react-router-dom"
-import { Delivery } from "./Delivery"
+import Remote from "./Remote"
 
-const router = createBrowserRouter(
-  [
-    {
-      id: "root",
-      path: "/",
-      element: (
+const router = createBrowserRouter([
+  {
+    id: "root",
+    path: "/",
+    element: (
+      <div>
+        Welcome to the Host app!
+        <br />
         <div>
-          Home
-          <div>
-            <Link to="/delivery">Go to Delivery App</Link>
-          </div>
-          <br />
-          <Outlet />
+          <Link to="/remote">Go to the Remote App</Link>
         </div>
-      ),
-      children: [
-        {
-          path: "delivery/*",
-          Component: () => <Delivery />,
-        },
-      ],
-    },
-  ],
-  // {
-  //   async patchRoutesOnNavigation({ patch, path }) {
-  //     if (path.startsWith("/delivery")) {
-  //       const { routes } = await import("delivery/routes")
-  //       patch("root", routes)
-  //     }
-  //   },
-  // },
-)
+        <br />
+        <Outlet />
+      </div>
+    ),
+    children: [
+      {
+        path: "remote/*",
+        Component: () => <Remote />,
+      },
+    ],
+  },
+])
 
 export default function App() {
   return <RouterProvider router={router} />
