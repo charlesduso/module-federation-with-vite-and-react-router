@@ -4,6 +4,8 @@
   "scripts": {
     "format": "prettier . --write",
     "dev": "concurrently \"npm run host:dev\" \"npm run remote:dev\"",
+    "build": "concurrently \"npm run host:build\" \"npm run remote:build\"",
+    "preview": "concurrently \"npm run host:preview\" \"npm run remote:preview\"",
     "host:dev": "cd host && npm run dev",
     "host:build": "cd host && npm run build",
     "host:preview": "cd host && npm run preview",
