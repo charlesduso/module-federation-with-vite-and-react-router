@@ -3,6 +3,7 @@
   "private": true,
   "scripts": {
     "format": "prettier . --write",
+    "dev": "concurrently \"npm run host:dev\" \"npm run remote:dev\"",
     "host:dev": "cd host && npm run dev",
     "host:build": "cd host && npm run build",
     "host:preview": "cd host && npm run preview",
@@ -15,6 +16,7 @@
     "remote"
   ],
   "dependencies": {
+    "concurrently": "^9.2.1",
     "prettier": "^3.8.1"
   }
 }
