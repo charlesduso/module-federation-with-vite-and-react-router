@@ -17,6 +17,10 @@ export default defineConfig({
       filename: "remoteEntry.js",
       exposes: {
         "./routes": "./src/routes.tsx",
+        "./export-app": "./src/export-app.tsx",
+      },
+      bridge: {
+        enableBridgeRouter: true,
       },
       shared: {
         react: {

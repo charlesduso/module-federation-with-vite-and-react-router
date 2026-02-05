@@ -19,6 +19,9 @@ export default defineConfig({
           type: "module",
         },
       },
+      bridge: {
+        enableBridgeRouter: true,
+      },
       shared: {
         react: {
           singleton: true,

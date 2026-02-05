@@ -1,7 +1,16 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom"
-import { routes } from "./routes"
+import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom"
 
-const router = createBrowserRouter(routes)
+const router = createBrowserRouter([
+  {
+    path: "/delivery",
+    element: (
+      <div>
+        Delivery Remote App <Outlet />
+      </div>
+    ),
+    children: [{ path: "orders", element: <div>Orders Page</div> }],
+  },
+])
 
 export default function App() {
   return <RouterProvider router={router} />

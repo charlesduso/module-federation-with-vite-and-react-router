@@ -4,6 +4,7 @@ import {
   Outlet,
   RouterProvider,
 } from "react-router-dom"
+import { Delivery } from "./Delivery"
 
 const router = createBrowserRouter(
   [
@@ -20,17 +21,22 @@ const router = createBrowserRouter(
           <Outlet />
         </div>
       ),
-      children: [],
+      children: [
+        {
+          path: "delivery/*",
+          Component: () => <Delivery />,
+        },
+      ],
     },
   ],
-  {
-    async patchRoutesOnNavigation({ patch, path }) {
-      if (path.startsWith("/delivery")) {
-        const { routes } = await import("delivery/routes")
-        patch("root", routes)
-      }
-    },
-  },
+  // {
+  //   async patchRoutesOnNavigation({ patch, path }) {
+  //     if (path.startsWith("/delivery")) {
+  //       const { routes } = await import("delivery/routes")
+  //       patch("root", routes)
+  //     }
+  //   },
+  // },
 )
 
 export default function App() {
